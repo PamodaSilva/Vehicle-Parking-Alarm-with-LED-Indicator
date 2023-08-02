@@ -30,3 +30,80 @@ void setup() {
   
   Serial.begin(9600);
 }
+
+void loop() {
+  // put your main code here, to run repeatedly:
+  
+  digitalWrite(trig, LOW);
+  delayMicroseconds (2);
+
+  digitalWrite(trig, HIGH);
+  delayMicroseconds (10);
+  digitalWrite(trig, LOW);
+
+  duration = pulseIn(echo, HIGH);
+
+  distance = duration*0.034/2;
+  
+  Serial.print("Distance :");
+  Serial.println(distance);
+
+  if (distance <= 7)
+  {
+    digitalWrite(LED6, HIGH);
+    tone(buzzer, 1000);
+    delay(1000);
+    noTone(buzzer);
+    delay(2000);
+  }
+  else
+  {
+    digitalWrite(LED1, LOW);
+  }
+  
+  if (distance <= 14)
+  {
+    digitalWrite(LED5, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED2, LOW);
+  }
+  
+  if (distance <= 21)
+  {
+    digitalWrite(LED4, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED3, LOW);
+  }
+  
+  if (distance <= 28)
+  {
+    digitalWrite(LED3, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED4, LOW);
+  }
+
+    if (distance <= 35)
+  {
+    digitalWrite(LED2, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED5, LOW);
+  }
+
+    if (distance <= 42)
+  {
+    digitalWrite(LED1, HIGH);
+  }
+  else
+  {
+    digitalWrite(LED6, LOW);
+  }
+  
+}
